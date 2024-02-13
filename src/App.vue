@@ -46,11 +46,10 @@ const isRight = ref<boolean>(false)
 <template>
   <main class="min-h-screen w-full bg-pink-300 flex items-center justify-center">
     <div class="relative flex items-center w-full justify-center">
-      <div class="heart-shape top-10 md:top-10 z-10" :class="(isRight ? 'blur-0' : 'blur-3xl')"/>
-      <h1 v-if="isRight" class="text-pink-50 text-4xl -top-32 z-30 absolute ">You're my Valentine~</h1>
-      <span v-if="isRight" class="text-pink-50 text-4xl -top-48 z-30 absolute ">I hope we meet soon babe</span>
+      <h1 v-if="isRight" class="text-pink-50 text-2xl md:text-4xl -top-16 z-30 absolute ">You're my Valentine~</h1>
+      <span v-if="isRight" class="text-pink-50 text-2xl md:text-4xl -top-24 z-30 absolute ">I hope we meet soon babe</span>
       <img v-if="isRight" src="../public/yay.png" width="160px" class="w-48 h-48 absolute -top-2 z-40"/>
-      <Card class="w-[250px] h-fit z-20 mx-auto" v-if="!isRight">
+      <Card class="w-[250px] h-fit z-20" v-if="!isRight">
         <CardHeader>
           <CardTitle>Valentine Guard</CardTitle>
           <CardDescription class="flex items-center gap-x-2">
@@ -172,37 +171,4 @@ const isRight = ref<boolean>(false)
 body {
 	@apply bg-pink-700
 }
-.heart-shape{
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-  @apply bg-pink-700
-}
-.heart-shape:before,
-.heart-shape:after{
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  content: '';
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
-  @apply bg-pink-700
-}
-.heart-shape:before{
-  bottom: 0px;
-  left: -110px;
-}
-.heart-shape:after{
-  top: -110px;
-  right: 0px;
-}
-
 </style>
-@/src/components/ui/sheet
