@@ -41,9 +41,10 @@ const isRight = ref<boolean>(false)
 </script>
 
 <template>
-  <main class="h-[150dvw] md:h-screen w-full bg-pink-300 flex items-center justify-center">
+  <main class="min-h-screen w-full bg-pink-300 flex items-center justify-center">
     <div class="relative flex items-center w-full justify-center">
       <div class="heart-shape top-10 md:top-10 z-10" :class="(isRight ? 'blur-0' : 'blur-3xl')"/>
+      <h1 v-if="isRight" class="text-pink-50 text-4xl -top-32 z-30 absolute ">You're my Valentine~</h1>
       <img v-if="isRight" src="../public/yay.png" width="160px" class="w-48 h-48 absolute -top-2 z-40"/>
       <Card class="w-[250px] h-fit z-20 mx-auto" v-if="!isRight">
         <CardHeader>
