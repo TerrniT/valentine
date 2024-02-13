@@ -16,6 +16,8 @@ import {
   SheetClose
 } from '@/components/ui/sheet'
 
+import { Checkbox } from '@/components/ui/checkbox'
+
 import {
   Card,
   CardContent,
@@ -28,8 +30,9 @@ import {
 import { Button } from '@/components/ui/button'
 
 const value = ref<string[]>([])
+const showAnswers = ref<boolean>(false)
 const handleComplete = () =>  {
-  if(value.value.join('') === '43135') {
+  if(value.value.join('') === '43520') {
     isRight.value = true
   } else {
     value.value = []
@@ -45,6 +48,7 @@ const isRight = ref<boolean>(false)
     <div class="relative flex items-center w-full justify-center">
       <div class="heart-shape top-10 md:top-10 z-10" :class="(isRight ? 'blur-0' : 'blur-3xl')"/>
       <h1 v-if="isRight" class="text-pink-50 text-4xl -top-32 z-30 absolute ">You're my Valentine~</h1>
+      <span v-if="isRight" class="text-pink-50 text-4xl -top-48 z-30 absolute ">I hope we meet soon babe</span>
       <img v-if="isRight" src="../public/yay.png" width="160px" class="w-48 h-48 absolute -top-2 z-40"/>
       <Card class="w-[250px] h-fit z-20 mx-auto" v-if="!isRight">
         <CardHeader>
@@ -71,21 +75,45 @@ const isRight = ref<boolean>(false)
             <SheetContent side="bottom" class="h-[50%]">
               <SheetHeader>
                 <SheetTitle>Password hints </SheetTitle>
-                <SheetDescription class="flex ">
+                <SheetDescription class="flex flex-col gap-y-6">
                   <ul class="*:py-2 *:font-medium text-start">
                     <li>
                       1. How many pets do I have ?
+                      <span
+                        v-if="showAnswers"
+                        class="text-pink-500"
+                      >
+                        (4)
+                      </span>
                     </li>
                     <li>
                       2. Сто Пятьдесят Шесть разделить на Пятьдесят Два
+                      <span
+                        v-if="showAnswers"
+                        class="text-pink-500 "
+                      >
+                        (3)
+                      </span>
                     </li>
                     <li>
-                      3. What day was I born?
-                    </li>
-                    <li>
-                      4. 5
+                      3. The phrase 我 爱 你 is only in slang (in numbers)
+                      <span
+                        v-if="showAnswers"
+                        class="text-pink-500"
+                      >
+                        (520)
+                      </span>
                     </li>
                   </ul>
+                  <div class="items-center flex gap-x-2">
+                    <Checkbox size="lg" :checked="showAnswers" @update:checked="showAnswers = !showAnswers" id="terms1" />
+                    <label
+                      for="terms1"
+                      class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      I give up. Show me answers !!!
+                    </label>
+                  </div>
                 </SheetDescription>
               </SheetHeader>
             </SheetContent>
@@ -112,6 +140,8 @@ const isRight = ref<boolean>(false)
                   v-for="(id, index) in 5"
                   :key="id"
                   :index="index"
+                  type="password"
+                  inputmode="numeric"
                   class="z-20 font-semibold"
                 />
               </PinInput>
